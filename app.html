@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <input id="display" type="text" disabled>
+    <main>
+      <div class="buttons">
+        <button onclick="printNumber(1)">1</button>
+        <button onclick="printNumber(2)">2</button>
+        <button onclick="printNumber(3)">3</button>
+        <button onclick="printNumber(4)">4</button>
+        <button onclick="printNumber(5)">5</button>
+        <button onclick="printNumber(6)">6</button>
+        <button onclick="printNumber(7)">7</button>
+        <button onclick="printNumber(8)">8</button>
+        <button onclick="printNumber(9)">9</button>
+        <button onclick="printNumber(0)">0</button>
+        <button id="equal" onclick="performOperation('=')">=</button>
+      </div>
+      <div class="functions">
+        <button onclick="performOperation('*')">x</button>
+        <button onclick="performOperation('/')">/</button>
+        <button onclick="performOperation('-')">-</button>
+        <button onclick="showValue()">test</button>
+        <button onclick="performOperation('+')">+</button>
+        <button onclick="clearDisplay()">Clr</button>
+      </div>
+    </main>
+
+    <script>
+    let displayIn = document.getElementById("display")
+    let firstNum = '';
+    let currentOperation = '';
+
+    function printNumber(x) {
+      displayIn.value += x;
+    }
+
+    function showValue() {
+      let inputValue = displayIn.value;
+      console.log('value is ', inputValue);
+    }
+
+    function clearDisplay() {
+      displayIn.value = '';
+      firstNum = '';
+      currentOperation = '';
+    }
+
+    function performOperation(operation) {
+      if (firstNum === '') {
+        firstNum = displayIn.value;
+        displayIn.value = '';
+        currentOperation = operation;
+      } else {
+        let secondNum = displayIn.value;
+        switch (currentOperation) {
+          case '+':
+            displayIn.value = parseFloat(firstNum) + parseFloat(secondNum);
+            break;
+          case '-':
+            displayIn.value = parseFloat(firstNum) - parseFloat(secondNum);
+            break;
+          case '*':
+            displayIn.value = parseFloat(firstNum) * parseFloat(secondNum);
+            break;
+          case '/':
+            displayIn.value = parseFloat(firstNum) / parseFloat(secondNum);
+            break;
+          default:
+            displayIn.value = 'Error';
+        }
+        firstNum = '';
+        currentOperation = operation === '=' ? '' : operation;
+      }
+    }
+  </script>
+
+  </body>
+</html>
