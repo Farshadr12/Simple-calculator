@@ -66,3 +66,46 @@ main {
 button {
   box-shadow: 2px 2px 2px #000000;
 }
+.logo h2 {
+  color: #dedede;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  top: 25vh;
+  font-size: 0.8rem;
+}
+@media only screen and (max-width: 550px) {
+  body {
+    width: 90vw;
+    height: 80vh;
+    margin-top: 10px;
+    padding: 10px 0;
+    border: none;
+  }
+  input {
+    width: 90%;
+    height: 20vh;
+    text-align: center;
+  }
+  .functions {
+    grid-template-columns: 60px;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .functions button {
+    font-size: 1.1rem;
+    height: 90%;
+    margin: 8px 5px;
+  }
+  main {
+    text-align: center;
+    align-items: center;
+  }
+  .logo h2 {
+    color: #dedede;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    top: 25vh;
+    font-size: 0.8rem;
+  }
+}
